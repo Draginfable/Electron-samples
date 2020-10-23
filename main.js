@@ -1,9 +1,11 @@
 'use strict';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, shell } = require('electron');
 const path = require('path');
 const url = require('url');
 let win;
+
+app.allowRendererProcessReuse = false;
 
 app.on('ready', () => {
 	win = new BrowserWindow({
@@ -11,6 +13,7 @@ app.on('ready', () => {
         height: 600,
         show: true,
         webPreferences: {
+            nativeWindowOpen: true,
             nodeIntegration: true
         }
     });
@@ -21,6 +24,11 @@ app.on('ready', () => {
 
     win.on('closed', () => {
         win = null
+    });
+
+    win.webContents.on('new-window', (e ,url) => {
+        e.preventDefault();
+        shell.openExternal(url);
     });
 
     win.setMenu(null);

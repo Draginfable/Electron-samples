@@ -7,7 +7,12 @@
     <title>Electron sample</title>
   </head>
   <body>
-    <p>Hello world</p>
-	<script type="text/javascript" src="renderer.js"></script>
+    <p>Click the malformed url: </p>
+    <a href="http://https%3B//github.com" target="_blank" rel="noopener noreferrer">http://https%3B//github.com</a>
+
+    <p>Click the correct url: </p>
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
+
+    <script type="text/javascript" src="renderer.js"></script>
   </body>
 </html>
