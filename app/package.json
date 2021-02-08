@@ -5,6 +5,6 @@
   "description": "electron-windows-notifications",
   "applicationTitle": "electron-windows-notifications",
   "dependencies": {
-    "electron-windows-notifications": "3.0.6"
+    "electron-windows-notifications": "3.0.8"
   }
 }
