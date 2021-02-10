@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, systemPreferences } = require('electron');
 const path = require('path');
 const url = require('url');
 let win;
@@ -24,4 +24,8 @@ app.on('ready', () => {
     win.setMenu(null);
 	win.webContents.openDevTools();
     console.log(process.versions);
+
+    systemPreferences.askForMediaAccess('microphone').then(success => {
+        console.log(success);
+    });
 });
