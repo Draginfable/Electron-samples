@@ -1,8 +1,7 @@
 'use strict';
 
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const url = require('url');
+
 let win;
 
 app.on('ready', () => {
@@ -11,7 +10,8 @@ app.on('ready', () => {
         height: 600,
         show: true,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false
         }
     });
 
