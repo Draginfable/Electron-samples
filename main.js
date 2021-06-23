@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, systemPreferences } = require('electron');
 
 let win;
 
@@ -10,8 +10,7 @@ app.on('ready', () => {
         height: 600,
         show: true,
         webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false
+            nodeIntegration: true
         }
     });
 
@@ -24,4 +23,8 @@ app.on('ready', () => {
     win.setMenu(null);
 	win.webContents.openDevTools();
     console.log(process.versions);
+
+    systemPreferences.askForMediaAccess('microphone').then(success => {
+        console.log('Microphone access granted:', success);
+    });
 });
